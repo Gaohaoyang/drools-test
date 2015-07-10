@@ -1,20 +1,26 @@
 package com.sample
  
-import com.sample.DroolsTest.Message;
+import com.sample.DroolsTest;
+import com.sample.Message;
  
-rule "Hello World"
+rule "1"
     when
-        m : Message( status == Message.HELLO, myMessage : message )
+        m : Message( a1 == true )
     then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
+    	m.setA1(false);
+    	
+    	System.out.println("rule--1");
+    	m.setA2(true);
+        update( m );
+end
+rule "2"
+    when
+        m : Message( a2 == true )
+    then
+    	m.setA2(false);
+    	
+    	System.out.println("rule--2");
+    	m.setA3(true);
         update( m );
 end
 
-rule "GoodBye"
-    when
-        Message( status == Message.GOODBYE, myMessage : message )
-    then
-        System.out.println( myMessage );
-end
