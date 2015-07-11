@@ -24,3 +24,7 @@ rule "2"
         update( m );
 end
 
+query "query1"
+	m:Message( a3==true )
+	//System.out.println("query--2");
+end
