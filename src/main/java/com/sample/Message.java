@@ -1,14 +1,21 @@
 package com.sample;
 
 public class Message {
+	
+/**
+ * test
+ * a1, a2->a3
+ * a3->a4
+ */
 	private boolean a1;
 	private boolean a2;
 	private boolean a3;
+	private boolean a4;
 	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "a1-"+a1+"\na2-"+a2+"\na3-"+a3;
+		return "a1-"+a1+", a2-"+a2+", a3-"+a3+", a4-"+a4;
 	}
 	
 	public boolean isA1() {
@@ -29,4 +36,11 @@ public class Message {
 	public void setA3(boolean a3) {
 		this.a3 = a3;
 	}
+	public boolean isA4() {
+		return a4;
+	}
+	public void setA4(boolean a4) {
+		this.a4 = a4;
+	}
+	
 }

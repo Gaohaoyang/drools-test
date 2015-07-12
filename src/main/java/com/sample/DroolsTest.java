@@ -18,10 +18,11 @@ public class DroolsTest {
 
             // go !
             Message message = new Message();
-            message.setA2(true);
+//            message.setA1(true);
+            message.setA4(true);
             kSession.insert(message);
             kSession.fireAllRules();
-            System.out.println(message.toString());
+            System.out.println("[推理结束]的状态："+message.toString());
         } catch (Throwable t) {
             t.printStackTrace();
         }

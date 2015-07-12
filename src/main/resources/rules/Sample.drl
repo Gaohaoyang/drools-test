@@ -3,28 +3,51 @@ package com.sample
 import com.sample.DroolsTest;
 import com.sample.Message;
  
+rule "go" 
+salience 10
+when
+  m : Message()
+then
+  System.out.println( "[引擎中]Message对象信息---"+m );
+end
+
+ 
 rule "1"
     when
-        m : Message( a1 == true )
+        m : Message( a1 == true ,a2 == true)
     then
     	m.setA1(false);
-    	
-    	System.out.println("rule--1");
-    	m.setA2(true);
-        update( m );
-end
-rule "2"
-    when
-        m : Message( a2 == true )
-    then
     	m.setA2(false);
     	
-    	System.out.println("rule--2");
+    	System.out.println("rule--1, a1, a2->a3");
     	m.setA3(true);
         update( m );
 end
 
-query "query1"
-	m:Message( a3==true )
+rule "2"
+    when
+        m : Message( a3 == true )
+    then
+    	m.setA3(false);
+    	
+    	System.out.println("rule--2, a3->a4");
+    	m.setA4(true);
+        update( m );
+end
+
+rule "3"
+    when
+        m : Message( a4 == true )
+        q()
+    then
+    	m.setA4(false);
+    	
+    	System.out.println("rule--3");
+    	//m.setA4(true);
+        update( m );
+end
+
+query q()
+	m:Message( a3==false )
 	//System.out.println("query--2");
 end
